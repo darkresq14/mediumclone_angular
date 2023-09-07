@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - Standalone Components
 - NgRx
-- Style Files "borrowed" from [here](https://github.com/gothinkster/realworld)
+- Style Files "borrowed" from [here](demo.productionready.io/main.css")
 
 ## Backend
 
