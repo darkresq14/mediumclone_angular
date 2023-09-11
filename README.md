@@ -1,12 +1,13 @@
 # MediumcloneAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
+Just another [realworld](https://github.com/gothinkster/realworld) app implementation. Exemplary frontend Medium.com clone powered by Angular 16 and NgRx.
 
 ## General information about the project
 
+- Angular 16
 - Standalone Components
 - NgRx
-- Style Files "borrowed" from [here](demo.productionready.io/main.css")
+- Style Files "borrowed" from [here](https://demo.productionready.io/main.css)
 
 ## Backend
 
