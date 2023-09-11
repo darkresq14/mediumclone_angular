@@ -5,8 +5,9 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 ## General information about the project
 
 - Angular 16
-- Standalone Components
+  - Standalone Components
 - NgRx
+- @ngrx/router-store to clean errors on navigate
 - Style Files "borrowed" from [here](https://demo.productionready.io/main.css)
 
 ## Backend
