@@ -7,9 +7,10 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 - Angular 16
   - Standalone Components
 - NgRx
-- @ngrx/router-store to clean errors on navigate
+  - @ngrx/router-store to clean errors on navigate
 - Style Files "borrowed" from [here](https://demo.productionready.io/main.css)
 
 ## Backend
 
-- RealWorld API - https://realworld-docs.netlify.app/docs/specs/backend-specs/introduction/
+- RealWorld API - https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints
+- Swagger - https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger
