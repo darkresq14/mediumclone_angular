@@ -1,0 +1,65 @@
+<ng-container *ngIf="data$ | async as data">
+  <nav class="navbar navbar-light">
+    <div class="container">
+      <a routerLink="/" class="navbar-brand">medium</a>
+      <ul class="nav navbar-nav pull-xs-right">
+        <li class="nav-item">
+          <a
+            routerLink="/"
+            routerLinkActive="router-link-active"
+            class="nav-link"
+            >Home</a
+          >
+        </li>
+        <ng-container *ngIf="data.currentUser">
+          <li class="nav-item">
+            <a
+              routerLink="/articles/new"
+              routerLinkActive="router-link-active"
+              class="nav-link"
+            >
+              <i class="ion-compose">&nbsp; New Post</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/settings"
+              routerLinkActive="router-link-active"
+              class="nav-link"
+            >
+              <i class="ion-gear-a">&nbsp; Settings</i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              [routerLink]="['/profile', data.currentUser.username]"
+              routerLinkActive="router-link-active"
+              class="nav-link"
+            >
+              <img class="user-pic" [src]="data.currentUser.image" />
+              &nbsp; {{ data.currentUser.username }}
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="data.currentUser === null">
+          <li class="nav-item">
+            <a
+              routerLink="/login"
+              routerLinkActive="router-link-active"
+              class="nav-link"
+              >Sign in</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              routerLink="/register"
+              routerLinkActive="router-link-active"
+              class="nav-link"
+              >Sign up</a
+            >
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </nav>
+</ng-container>
