@@ -7,8 +7,10 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 - Angular 16
   - Standalone Components
 - NgRx
-  - @ngrx/router-store to clean errors on navigate
-- Style Files "borrowed" from [here](https://demo.productionready.io/main.css)
+  - @ngrx/router-store to clean state on navigate
+- Style
+  - CSS "borrowed" from [here](https://demo.productionready.io/main.css)
+  - HTML & classes like [here](https://angular.realworld.io) 
 
 ## Backend
 
