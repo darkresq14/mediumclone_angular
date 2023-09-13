@@ -1,0 +1,29 @@
+<div style="display: flex; justify-content: center; width: 100%">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+      <a [routerLink]="url" class="page-link" [queryParams]="{ page: 1 }">
+        First
+      </a>
+    </li>
+
+    <li
+      *ngFor="let page of pages"
+      class="page-item"
+      [ngClass]="{ active: currentPage === page }"
+    >
+      <a [routerLink]="url" class="page-link" [queryParams]="{ page: page }">
+        {{ page }}
+      </a>
+    </li>
+
+    <li class="page-item" [ngClass]="{ disabled: currentPage === pagesCount }">
+      <a
+        [routerLink]="url"
+        class="page-link"
+        [queryParams]="{ page: pagesCount }"
+      >
+        Last
+      </a>
+    </li>
+  </ul>
+</div>

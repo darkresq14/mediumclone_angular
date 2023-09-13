@@ -11,6 +11,7 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 - Style
   - CSS "borrowed" from [here](https://demo.productionready.io/main.css)
   - HTML & classes like [here](https://angular.realworld.io) 
+- query-string lib for parsing query params
 
 ## Backend
 

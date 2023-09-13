@@ -4,14 +4,23 @@ import { Store } from '@ngrx/store';
 import { feedActions } from './store/actions';
 import { combineLatest } from 'rxjs';
 import { selectError, selectFeedData, selectIsLoading } from './store/reducers';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Params, Router, RouterLink } from '@angular/router';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { LoadingComponent } from '../loading/loading.component';
+import { environment } from 'src/environments/environment';
+import { PaginationComponent } from '../pagination/pagination.component';
+import queryString from 'query-string';
 
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [CommonModule, RouterLink, ErrorMessageComponent, LoadingComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    ErrorMessageComponent,
+    LoadingComponent,
+    PaginationComponent,
+  ],
   templateUrl: './feed.component.html',
 })
 export class FeedComponent implements OnInit {
@@ -23,9 +32,32 @@ export class FeedComponent implements OnInit {
     feed: this.store.select(selectFeedData),
   });
 
-  constructor(private store: Store) {}
+  limit = environment.limit;
+  baseUrl = this.router.url.split('?')[0];
+  currentPage: number = 1;
+
+  constructor(
+    private store: Store,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
-    this.store.dispatch(feedActions.getFeed({ url: this.apiUrl }));
+    this.route.queryParams.subscribe((params: Params) => {
+      this.currentPage = Number(params['page'] || '1');
+      this.fetchFeed();
+    });
+  }
+
+  fetchFeed(): void {
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    this.store.dispatch(feedActions.getFeed({ url: apiUrlWithParams }));
   }
 }
