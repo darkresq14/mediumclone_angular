@@ -8,4 +8,6 @@ import { FeedComponent } from 'src/app/shared/components/feed/feed.component';
   imports: [CommonModule, FeedComponent],
   templateUrl: './global-feed.component.html',
 })
-export class GlobalFeedComponent {}
+export class GlobalFeedComponent {
+  apiUrl = '/articles';
+}
