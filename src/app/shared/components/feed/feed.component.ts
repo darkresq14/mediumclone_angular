@@ -10,6 +10,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import { environment } from 'src/environments/environment';
 import { PaginationComponent } from '../pagination/pagination.component';
 import queryString from 'query-string';
+import { TagListComponent } from '../tag-list/tag-list.component';
 
 @Component({
   selector: 'app-feed',
@@ -20,6 +21,7 @@ import queryString from 'query-string';
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TagListComponent,
   ],
   templateUrl: './feed.component.html',
 })
