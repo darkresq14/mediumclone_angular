@@ -17,3 +17,6 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 
 - RealWorld API - https://realworld-docs.netlify.app/docs/specs/backend-specs/endpoints
 - Swagger - https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger
+
+## TODO
+[ ] - Make tags as pills on edit form and remove them individually

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleFormInterface } from 'src/app/shared/components/article-form/types/articleFormValues.interface';
+import { ArticleFormValuesInterface } from 'src/app/shared/components/article-form/types/articleFormValues.interface';
 import { ArticleFormComponent } from 'src/app/shared/components/article-form/article-form.component';
 import { Store } from '@ngrx/store';
 import { combineLatest } from 'rxjs';
@@ -32,7 +32,7 @@ export class CreateArticleComponent {
 
   constructor(private store: Store) {}
 
-  onSubmit(articleFormValues: ArticleFormInterface): void {
+  onSubmit(articleFormValues: ArticleFormValuesInterface): void {
     const request: ArticleRequestInterface = {
       article: articleFormValues,
     };

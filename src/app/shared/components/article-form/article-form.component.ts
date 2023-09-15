@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ArticleFormInterface } from './types/articleFormValues.interface';
+import { ArticleFormValuesInterface } from './types/articleFormValues.interface';
 import { BackendErrorsInterface } from '../../types/backendErrors.interface';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BackendErrorMessagesComponent } from '../backend-error-messages/backend-error-messages.component';
@@ -12,11 +12,11 @@ import { BackendErrorMessagesComponent } from '../backend-error-messages/backend
   templateUrl: './article-form.component.html',
 })
 export class ArticleFormComponent implements OnInit {
-  @Input() initialValues?: ArticleFormInterface;
+  @Input() initialValues?: ArticleFormValuesInterface;
   @Input() isSubmitting: boolean = false;
   @Input() errors: BackendErrorsInterface | null = null;
 
-  @Output() articleSubmit = new EventEmitter<ArticleFormInterface>();
+  @Output() articleSubmit = new EventEmitter<ArticleFormValuesInterface>();
 
   form = this.fb.nonNullable.group({
     title: '',
@@ -46,7 +46,7 @@ export class ArticleFormComponent implements OnInit {
 
   onSubmit(): void {
     const formValue = this.form.getRawValue();
-    const articleFormValues: ArticleFormInterface = {
+    const articleFormValues: ArticleFormValuesInterface = {
       ...formValue,
       tagList: formValue.tagList.split(' '),
     };
