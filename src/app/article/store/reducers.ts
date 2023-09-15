@@ -1,7 +1,7 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { routerNavigationAction } from '@ngrx/router-store';
-import { ArticleStateInterface } from '../types/ArticleStateInterface';
 import { articleActions } from './actions';
+import { ArticleStateInterface } from '../types/articleStateInterface';
 
 const initialState: ArticleStateInterface = {
   isLoading: false,
