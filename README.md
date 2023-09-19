@@ -1,9 +1,15 @@
-# MediumcloneAngular
+# [MediumcloneAngular](https://darkresq14.github.io/mediumclone-angular/)
 
 Just another [realworld](https://www.realworld.how/) app implementation. Exemplary frontend Medium.com clone powered by Angular 16 and NgRx.
 Github repo: https://github.com/gothinkster/realworld
 
 Another Angular Solution [here](https://angular.realworld.io)
+
+## Hosting
+
+Using GitHub Pages to host the app. The app is hosted at https://darkresq14.github.io/mediumclone-angular/
+
+- build command: `ng build --output-path docs --base-href /mediumclone_angular/`
 
 ## General information about the project
 
