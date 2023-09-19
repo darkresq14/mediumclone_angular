@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { PaginationComponent } from '../pagination/pagination.component';
 import queryString from 'query-string';
 import { TagListComponent } from '../tag-list/tag-list.component';
+import { AddToFavoritesComponent } from '../add-to-favorites/add-to-favorites.component';
 
 @Component({
   selector: 'app-feed',
@@ -28,6 +29,7 @@ import { TagListComponent } from '../tag-list/tag-list.component';
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
+    AddToFavoritesComponent,
   ],
   templateUrl: './feed.component.html',
 })
