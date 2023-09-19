@@ -28,11 +28,11 @@ export class AddToFavoritesComponent {
   ) {
     this.currentUser$
       .pipe(
-        takeUntilDestroyed(),
         filter(
           (currentUser): currentUser is CurrentUserInterface | null =>
             currentUser !== undefined,
         ),
+        takeUntilDestroyed(),
       )
       .subscribe((currentUser) => {
         this.currentUser = currentUser;
