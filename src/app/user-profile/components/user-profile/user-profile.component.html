@@ -1,63 +1,57 @@
-<ng-container *ngIf="data$ | async as data">
-  <div class="profile-page" *ngIf="data.userProfile">
-    <div class="user-info">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-md-10 offset-md-1">
-            <img
-              [src]="data.userProfile.image"
-              alt="User Image"
-              class="user-img"
-            />
-            <h4>{{ data.userProfile.username }}</h4>
-            <p>{{ data.userProfile.bio }}</p>
-            <div>
-              FOLLOW USER BUTTON
-              <a
-                *ngIf="data.isCurrentUserProfile"
-                class="btn btn-sm btn-outline-secondary action-btn"
-                routerLink="/settings"
-              >
-                <i class="ion-gear-a"></i>
-                <span>&nbsp; Edit Profile Settings</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="profile-page" *ngIf="userProfile()">
+  <div class="user-info">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-10 offset-md-1">
-          <div class="articles-toggler">
-            <ul class="nav nav-pills outline-active">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  [routerLink]="['/profile', data.userProfile.username]"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  >My Posts</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  [routerLink]="[
-                    '/profile',
-                    data.userProfile.username,
-                    'favorites'
-                  ]"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  >Favorite Posts</a
-                >
-              </li>
-            </ul>
+          <img [src]="userProfile()?.image" alt="User Image" class="user-img" />
+          <h4>{{ userProfile()?.username }}</h4>
+          <p>{{ userProfile()?.bio }}</p>
+          <div>
+            FOLLOW USER BUTTON
+            <a
+              *ngIf="isCurrentUserProfile()"
+              class="btn btn-sm btn-outline-secondary action-btn"
+              routerLink="/settings"
+            >
+              <i class="ion-gear-a"></i>
+              <span>&nbsp; Edit Profile Settings</span>
+            </a>
           </div>
-          <app-feed [apiUrl]="getApiUrl()"></app-feed>
         </div>
       </div>
     </div>
   </div>
-</ng-container>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="articles-toggler">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="['/profile', userProfile()?.username]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >My Posts</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                [routerLink]="[
+                  '/profile',
+                  userProfile()?.username,
+                  'favorites'
+                ]"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }"
+                >Favorite Posts</a
+              >
+            </li>
+          </ul>
+        </div>
+        <app-feed [apiUrl]="getApiUrl()"></app-feed>
+      </div>
+    </div>
+  </div>
+</div>

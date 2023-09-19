@@ -6,7 +6,7 @@ Just another [realworld](https://github.com/gothinkster/realworld) app implement
 
 - Angular 16
   - Standalone Components
-  - using Signals
+  - using signals in user-profile & add-to-favorites component
 - NgRx
   - using `inject` in effects
   - @ngrx/router-store to clean state on navigate
