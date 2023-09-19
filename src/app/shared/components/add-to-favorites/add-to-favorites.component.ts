@@ -1,5 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { addToFavoritesActions } from './store/actions';
+import { selectCurrentUser } from 'src/app/auth/store/reducers';
+import { Router } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CurrentUserInterface } from '../../types/currenUser.interface';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-add-to-favorites',
@@ -12,9 +19,39 @@ export class AddToFavoritesComponent {
   @Input() favoritesCount: number = 0;
   @Input() articleSlug: string = '';
 
-  constructor() {}
+  currentUser$ = this.store.select(selectCurrentUser);
+  currentUser: CurrentUserInterface | null = null;
+
+  constructor(
+    private store: Store,
+    private router: Router,
+  ) {
+    this.currentUser$
+      .pipe(
+        takeUntilDestroyed(),
+        filter(
+          (currentUser): currentUser is CurrentUserInterface | null =>
+            currentUser !== undefined,
+        ),
+      )
+      .subscribe((currentUser) => {
+        this.currentUser = currentUser;
+      });
+  }
 
   handleLike(): void {
+    if (!this.currentUser) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
+
+    this.store.dispatch(
+      addToFavoritesActions.addToFavorites({
+        isFavorited: this.isFavorited,
+        slug: this.articleSlug,
+      }),
+    );
+
     if (this.isFavorited) {
       this.favoritesCount--;
     } else {

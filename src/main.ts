@@ -21,6 +21,7 @@ import {
   popularTagsFeatureKey,
   popularTagsReducer,
 } from './app/shared/components/popular-tags/store/reducers';
+import * as addToFavoritesEffects from './app/shared/components/add-to-favorites/store/effects';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -32,7 +33,12 @@ bootstrapApplication(AppComponent, {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
-    provideEffects(authEffects, feedEffects, popularTagsEffects),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      popularTagsEffects,
+      addToFavoritesEffects,
+    ),
     provideRouterStore(),
     provideStoreDevtools({
       maxAge: 25,
