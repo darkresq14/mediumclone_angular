@@ -4,9 +4,7 @@ import { Store } from '@ngrx/store';
 import { addToFavoritesActions } from './store/actions';
 import { selectCurrentUser } from 'src/app/auth/store/reducers';
 import { Router } from '@angular/router';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CurrentUserInterface } from '../../types/currenUser.interface';
-import { filter } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-add-to-favorites',
@@ -20,27 +18,15 @@ export class AddToFavoritesComponent {
   @Input() articleSlug: string = '';
 
   currentUser$ = this.store.select(selectCurrentUser);
-  currentUser: CurrentUserInterface | null = null;
+  userSignal = toSignal(this.currentUser$);
 
   constructor(
     private store: Store,
     private router: Router,
-  ) {
-    this.currentUser$
-      .pipe(
-        filter(
-          (currentUser): currentUser is CurrentUserInterface | null =>
-            currentUser !== undefined,
-        ),
-        takeUntilDestroyed(),
-      )
-      .subscribe((currentUser) => {
-        this.currentUser = currentUser;
-      });
-  }
+  ) {}
 
   handleLike(): void {
-    if (!this.currentUser) {
+    if (!this.userSignal()) {
       this.router.navigateByUrl('/login');
       return;
     }
