@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UtilsService {
   range(start: number, end: number): number[] {
-    return [...Array(end - start).keys()].map((el) => el + start);
+    return [...Array(end - start + 1).keys()].map((el) => el + start);
   }
 
   range10(currentPage: number, maxPage: number): number[] {
@@ -22,6 +22,6 @@ export class UtilsService {
       start = Math.max(end - 9, 1);
     }
 
-    return this.range(start, end + 1);
+    return this.range(start, end);
   }
 }

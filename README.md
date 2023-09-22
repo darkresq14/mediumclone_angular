@@ -17,10 +17,14 @@ Using GitHub Pages to host the app. The app is hosted at https://darkresq14.gith
 - NgRx
   - using `inject` in effects
   - @ngrx/router-store to clean state on navigate
-- Optimistic updates for favorite/unfavorite
 - Style
   - CSS "borrowed" from [here](https://demo.productionready.io/main.css)
   - HTML & CSS Class Templates from [here](https://www.realworld.how//docs/specs/frontend-specs/templates) 
+- Testing
+  - Jest
+  - components: `error-message.component.spec.ts`, `pagination.component.spec.ts`
+  - service: `utils.service.spec.ts`
+- Optimistic updates for favorite/unfavorite
 - query-string lib for parsing query params
 
 ## Backend
