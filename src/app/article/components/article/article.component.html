@@ -3,34 +3,7 @@
     <div class="banner">
       <div class="container" *ngIf="data.article">
         <h1>{{ data.article.title }}</h1>
-        <div class="article-meta">
-          <a [routerLink]="['/profiles', data.article.author.username]">
-            <img [src]="data.article.author.image" alt="Author Image" />
-          </a>
-          <div class="info">
-            <a
-              [routerLink]="['/profiles', data.article.author.username]"
-              class="author"
-            >
-              {{ data.article.author.username }}
-            </a>
-            <span class="date">{{ data.article.createdAt | date }}</span>
-          </div>
-          <span *ngIf="data.isAuthor">
-            <a
-              [routerLink]="['/articles', data.article.slug, 'edit']"
-              class="btn btn-outline-secondary btn-sm"
-            >
-              <i class="ion-edit"></i>Edit Article
-            </a>
-            <button
-              class="btn btn-outline-danger btn-sm"
-              (click)="deleteArticle()"
-            >
-              Delete Article
-            </button>
-          </span>
-        </div>
+        <ng-container *ngTemplateOutlet="articleMeta"></ng-container>
       </div>
     </div>
 
@@ -41,7 +14,7 @@
         [message]="data.error"
       ></app-error-message>
 
-      <div class="row artiocle-content" *ngIf="data.article">
+      <div class="row article-content" *ngIf="data.article">
         <div class="col-xs-12">
           <div>
             <p>{{ data.article.body }}</p>
@@ -50,5 +23,42 @@
         </div>
       </div>
     </div>
+    <hr />
+    <div class="article-actions">
+      <ng-container *ngTemplateOutlet="articleMeta"></ng-container>
+    </div>
   </div>
+
+  <ng-template #articleMeta>
+    <ng-container *ngIf="data.article">
+      <div class="article-meta">
+        <a [routerLink]="['/profiles', data.article.author.username]">
+          <img [src]="data.article.author.image" alt="Author Image" />
+        </a>
+        <div class="info">
+          <a
+            [routerLink]="['/profiles', data.article.author.username]"
+            class="author"
+          >
+            {{ data.article.author.username }}
+          </a>
+          <span class="date">{{ data.article.createdAt | date }}</span>
+        </div>
+        <span *ngIf="data.isAuthor">
+          <a
+            [routerLink]="['/articles', data.article.slug, 'edit']"
+            class="btn btn-outline-secondary btn-sm"
+          >
+            <i class="ion-edit"></i>Edit Article
+          </a>
+          <button
+            class="btn btn-outline-danger btn-sm"
+            (click)="deleteArticle()"
+          >
+            Delete Article
+          </button>
+        </span>
+      </div>
+    </ng-container>
+  </ng-template>
 </ng-container>
